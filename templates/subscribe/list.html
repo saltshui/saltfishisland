@@ -1,0 +1,50 @@
+﻿{% extends "aside.html" %}
+{% block title %}
+订阅管理
+{% endblock title %}
+
+{% block main %}
+<div class="container">
+
+    <!-- 未读通知列表 -->
+    <div class="card-header bg-white">
+        订阅
+    </div>
+    <div class="row mt-4 ml-4">
+        <a href="{% url 'subscribe:update' %}?&update_type=2" class="btn btn-outline-dark" role="button">取消所有订阅</a>
+    </div>
+    <div class="row mt-2 ml-4">
+        <ul class="list-group">
+            {% for subs in subscribe %}
+            <li class="list-group-item" id="notice_link">
+                <a href="{% url 'subscribe:update' %}?subs_id={{ subs.id }}&update_type=3">
+                    {{ subs.category.name }}:{{ subs.category.introduce }}
+                </a>
+
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="card-header bg-white">
+        未订阅
+    </div>
+
+    <div class="row mt-4 ml-4">
+        <a href="{% url 'subscribe:update' %}?&update_type=1" class="btn btn-outline-dark" role="button">订阅全部</a>
+    </div>
+    <div class="row mt-2 ml-4">
+        <ul class="list-group">
+            {% for subs in All %}
+            <li class="list-group-item" id="notice_link">
+                <a href="{% url 'subscribe:update' %}?&subs_id={{ subs.id }}&update_type=3">
+                    {{ subs.category.name }}:{{ subs.category.introduce }}
+                </a>
+
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+</div>
+
+{% endblock main %}

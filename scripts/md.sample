@@ -1,0 +1,148 @@
+#士兵队列训练问题
+
+##问题描述
+
+Time Limit: 2000/1000 MS (Java/Others)    
+Memory Limit: 65536/32768 K (Java/Others)
+
+
+###Problem Description
+某部队进行新兵队列训练，将新兵从一开始按顺序依次编号，并排成一行横队，训练的规则如下：从头开始一至二报数，凡报到二的出列，剩下的向小序号方向靠拢，再从头开始进行一至三报数，凡报到三的出列，剩下的向小序号方向靠拢，继续从头开始进行一至二报数。。。，以后从头开始轮流进行一至二报数、一至三报数直到剩下的人数不超过三人为止。
+ 
+
+###Input
+本题有多个测试数据组，第一行为组数N，接着为N行新兵人数，新兵人数不超过5000。
+ 
+
+###Output
+共有N行，分别对应输入的新兵人数，每行输出剩下的新兵最初的编号，编号之间有一个空格。
+ 
+
+###Sample Input
+2
+20
+40
+ 
+
+###Sample Output
+1 7 19
+1 19 37
+
+##解法1
+模拟。模拟整个过程就可以了，链表队列啥的都可以，队列的话可以每次报数报到的人出队列，没被出列的再入队。
+```C++
+#include <iostream>
+using namespace std;
+#define quesize 5010
+typedef struct{
+	int queue[quesize],front,rear;
+	void queini()
+	{
+		front=rear=0;
+	}
+	int quelen()
+	{
+		return (rear-front+quesize)%quesize;
+	}
+	void push(int a)
+	{
+		if((rear+1)%quesize!=front)
+		{
+			queue[rear]=a;
+			rear=(rear+1)%quesize;
+		}
+	}
+	int pop()
+	{
+		if(quelen()!=0)
+		{
+			front=(front+1)%quesize;
+			return queue[(front-1+quesize)%quesize];
+		}
+		printf("error\n");
+		return 0;
+	}
+}que;
+
+int main()
+{
+	int T;
+	que* queue;
+	queue=(que*)malloc(sizeof(que));
+	while(scanf("%d",&T)!=EOF)
+	{
+		while(T--)
+		{
+			int n;
+			scanf("%d",&n);
+			queue->queini();
+			for(int i=1;i<=n;i++)
+				queue->push(i);
+			int flag=0;
+			while(queue->quelen()>3)
+			{
+				for(int i=1,len=queue->quelen();i<=len;i++)
+				{
+					queue->push(queue->pop());
+					i++;
+					if(flag%2&&i<=len)
+					{
+						queue->push(queue->pop());
+						i++;
+					}
+					if(i<=len) queue->pop();
+				}
+				flag++;
+			}
+			for(int i=1,len=queue->quelen();i<=len;i++)
+				printf(i!=len?"%d ":"%d\n",queue->pop());
+		}
+	}
+	return 0;
+}
+```
+##解法2
+推导报数的过程，首先判断要点几次名才能降到3个人或以下。易得第奇数次处理后人数变为 (N + 1) / 2; 第偶数次处理后人数变为 (N + 1) * 2 / 3;
+通过循环计算出要点多少次名，和最后剩几个人。
+然后算出剩下的几个人的原始号码。
+第奇数次处理后，第n人的在上一列的序号为 2 * n - 1;
+第偶数次处理后，第n人的在上一列的序号为 n + (n + 1) / 2 - 1;
+```C++
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int T;
+    while(scanf("%d",&T)!=EOF)
+    {
+        while(T--)
+        {
+            int n;
+            scanf("%d",&n);
+            int cnt=0,flag=0;
+            while(n>3)
+            {
+                if(flag%2)
+                    n= (n+ 1) * 2 / 3;
+                else n = (n + 1) / 2;
+                cnt++;
+                flag++;
+            }
+            printf("1");
+            for(int j=2;j<=n;j++)
+            {
+                int k=j;
+                for(int i=cnt;i>0;i--)
+                {
+                    if(i%2)k= 2 * k - 1;
+                    else k= k + (k + 1) / 2 - 1;
+                }
+                printf(" %d",k);
+            }
+            printf("\n");
+        }
+    }
+    return 0;
+}
+```

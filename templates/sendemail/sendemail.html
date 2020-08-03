@@ -1,0 +1,14 @@
+<title>订阅邮件发送</title>
+<form class="form" action="{% url 'sendemail:sendemail' %}" method="post">
+    {% csrf_token %}
+    {% for field in form %}
+        {{ field.label_tag }}
+        {{ field }}
+        {{ field.errors }}
+        {% if field.help_text %}
+            <p class="help text-small text-muted">{{ field.help_text|safe }}</p>
+        {% endif %}
+    {% endfor %}
+    <button type="submit" class="btn btn-primary btn-block">发送邮件</button>
+    <input type="hidden" name="next" value="{{ next }}"/>
+</form>

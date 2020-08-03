@@ -1,0 +1,45 @@
+{% extends 'aside.html' %}
+{% block title %}
+   鱼咸岛
+{% endblock title %}
+
+{% block main %}
+
+
+<h1 class="entry-title" style="border-bottom: 1px solid #eee;font-size: 66px;">
+    About
+</h1>
+<div id="frontcard">
+    <div class="card">
+        <div class="card-header bg-white">
+            <a class="card-link" style="font-weight: 600;font-size: 20px;" data-toggle="collapse" href="#collapseWhat">
+                这是啥:
+            </a>
+        </div>
+        <div id="collapseWhat" class="collapse show" data-parent="#frontcard">
+            <div class="card-body">
+                <a style="font-weight: 400;font-size: 20px;">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;鱼咸岛，一座不可名状的神秘小岛，由咸鱼界最伟大的咸鱼<s>毕竟世界上除了我都是大佬</s>于不明维度的咸鱼界某处发现并开发。
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header bg-white">
+            <a class="card-link" style="font-weight: 600;font-size: 20px;" data-toggle="collapse" href="#collapsenHow">
+                在鱼咸岛，您可以：
+            </a>
+        </div>
+        <div id="collapseHow" class="collapse" data-parent="#frontcard">
+            <div class="card-body">
+                <ul style="font-weight: 400;font-size: 20px;">
+                    <li>随便点点看看</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock main %}

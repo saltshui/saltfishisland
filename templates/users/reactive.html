@@ -1,0 +1,60 @@
+﻿{% extends 'aside.html' %}
+
+    {% block title %}
+发送激活邮件
+    {% endblock title %}
+
+
+{% block main %}
+
+    <div class="container col-10 col-md-7 offset-md-2">
+        <h3 class="offset-4">激活</h3>
+        <br>
+        <form class="form" action="{% url 'users:reactive' %}" method="post" role="form">
+            {% csrf_token %}
+            {% if form.non_field_errors %}
+            <div class="alert alert-warning">{{ form.non_field_errors }}</div>
+            {% endif %}
+
+            {% for field in form %}
+            <div class="form-group">
+                <div class="col-10">
+                    {{ field }}
+                </div>
+            </div>
+            {% if field.errors %}
+            <div class="alert alert-warning">{{ field.errors }}</div>
+            {% endif %}
+            {% if field.help_text %}
+            <p class="help-block">
+                {{ field.help_text|safe }}
+            </p>
+            {% endif %}
+
+            {% endfor %}
+
+            <button type="submit" class="btn btn-outline-dark offset-4">提交</button>
+        </form>
+        <div class="flex-left top-gap text-small">
+            <div><span>已经激活？<a href="{% url 'login' %}">立即登录</a></span></div>
+        </div>
+
+    </div>
+
+
+        {% endblock main %}
+
+
+
+        {% block script %}
+
+<script>
+    $('.captcha').click(function () {
+        $.getJSON("/captcha/refresh/", function (result) {
+            $('.captcha').attr('src', result['image_url']);
+            $('#id_captcha_0').val(result['key'])
+        });
+
+
+    });</script>
+        {% endblock script %}

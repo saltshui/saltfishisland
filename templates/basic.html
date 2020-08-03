@@ -1,0 +1,16 @@
+﻿{% load static %}
+{% include 'staticbase.html' %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}{% endblock title %}</title>
+    {% block staticsbase %}{% endblock staticsbase %}
+</head>
+
+<body>
+    {% block main %}{% endblock main %}
+    {% block script %}{% endblock script %}
+
+</body>
+</html>

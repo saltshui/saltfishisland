@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load blog_extras %}
+
+{% block aside %}
+<div id="accordion">
+    <div class="card">
+        <div class="card-header bg-white">
+            <a class="card-link" data-toggle="collapse" href="#collapseRecent">
+                最新文章
+            </a>
+        </div>
+        <div id="collapseRecent" class="collapse show" data-parent="#accordion">
+            <div class="card-body">
+                {% show_recent_posts %}
+
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <a class="collapsed card-link" data-toggle="collapse" href="#collapseArc">
+                归档
+            </a>
+        </div>
+        <div id="collapseArc" class="collapse" data-parent="#accordion">
+            <div class="card-body">
+                {% show_archives %}
+
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <a class="collapsed card-link" data-toggle="collapse" href="#collapseCat">
+                分类
+            </a>
+        </div>
+        <div id="collapseCat" class="collapse" data-parent="#accordion">
+            <div class="card-body">
+                {% show_categories %}
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <a class="collapsed card-link" data-toggle="collapse" href="#collapseTag">
+                标签
+            </a>
+        </div>
+        <div id="collapseTag" class="collapse" data-parent="#accordion">
+            <div class="card-body">
+                {% show_tags %}
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <a class="collapsed card-link" data-toggle="collapse" href="#collapseSub">
+                订阅
+            </a>
+        </div>
+        <div id="collapseSub" class="collapse" data-parent="#accordion">
+            <div class="card-body">
+                <div class="widget">
+                    <ul>
+                        <li>
+                            <i class="icon-rss"></i>
+                            <a href="{% url 'rss' %}"> RSS 订阅</a>
+                        </li>
+                        <li>
+                            <i class="icon-envelope-alt"></i>
+                            <a href="{% url 'subscribe:list' %}"> 邮件订阅</a>
+                        </li>
+
+                    </ul>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock aside %}

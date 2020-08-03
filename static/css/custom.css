@@ -1,0 +1,421 @@
+/**
+ * Contents
+ *
+ * 1 - General Elements
+ * 2 - Home/Blog
+ *   2.1 - Read More Button CSS 3 style
+ * 3 - Widget
+ * 4 - Footer
+ * 5 - Contact Page Social
+ * 6 - Pagination
+ * 7 - highlight
+ * 8 - BackToTop
+ */
+
+/**
+ * 1 - General Elements
+ */
+
+s {
+    color: lightgrey;
+}
+
+
+a {
+    color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+    font-weight: 600;
+}
+
+    a:hover {
+        color: #0056b3;
+        text-decoration: underline
+    }
+
+    a:not([href]) {
+        color: inherit;
+        text-decoration: none
+    }
+
+        a:not([href]):hover {
+            color: inherit;
+            text-decoration: none
+        }
+
+
+a {
+    color: #333;
+}
+
+a:hover, a:focus {
+    color: #000;
+}
+
+.card {
+    border: white;
+}
+
+.card-header {
+    background: white;
+    font-size: 28px;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid black;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out
+}
+
+    .form-control:focus {
+        color: #495057;
+        background-color: #fff;
+        border-color: #1d2124;
+        outline: 0;
+        box-shadow: 0 0 0 .2rem rgba(82,88,93,.5)
+    }
+
+
+.dropdown-item.active, .dropdown-item:active {
+    color: #fff;
+    text-decoration: none;
+    background-color: black
+}
+
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: .75rem 1.25rem;
+    background-color: #fff;
+    border: 0px solid rgba(0,0,0,.125)
+}
+
+/**
+ * 2 - Home/Blog
+ */
+.content-body {
+    padding-bottom: 4em;
+}
+
+.post {
+    background: #fff;
+    padding: 30px 30px 0;
+}
+
+.entry-title {
+    text-align: center;
+    font-size: 1.9em;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    padding: 10px 20px 0;
+}
+
+.entry-meta {
+    text-align: center;
+    color: #DDDDDD;
+    font-size: 13px;
+    margin-bottom: 30px;
+}
+
+.entry-content {
+    font-size: 18px;
+    line-height: 1.9;
+    font-weight: 300;
+    color: #000;
+}
+
+.post-category::after,
+.post-date::after,
+.post-author::after,
+.comments-link::after {
+    content: ' ·';
+    color: #000;
+}
+
+/**
+ * 2.1 - Read More Button CSS 3 style
+ */
+
+.read-more {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 400;
+    word-spacing: 1px;
+    letter-spacing: 0.01em;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.cl-effect-14 a {
+    padding: 0 20px;
+    height: 45px;
+    line-height: 45px;
+    position: relative;
+    display: inline-block;
+    margin: 15px 25px;
+    letter-spacing: 1px;
+    font-weight: 400;
+    text-shadow: 0 0 1px rgba(255, 255, 255, 0.3);
+}
+
+.cl-effect-14 a::before,
+.cl-effect-14 a::after {
+    position: absolute;
+    width: 45px;
+    height: 1px;
+    background: #C3C3C3;
+    content: '';
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    pointer-events: none;
+}
+
+.cl-effect-14 a::before {
+    top: 0;
+    left: 0;
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    transform: rotate(90deg);
+    -webkit-transform-origin: 0 0;
+    -moz-transform-origin: 0 0;
+    transform-origin: 0 0;
+}
+
+.cl-effect-14 a::after {
+    right: 0;
+    bottom: 0;
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    transform: rotate(90deg);
+    -webkit-transform-origin: 100% 0;
+    -moz-transform-origin: 100% 0;
+    transform-origin: 100% 0;
+}
+
+.cl-effect-14 a:hover::before,
+.cl-effect-14 a:hover::after,
+.cl-effect-14 a:focus::before,
+.cl-effect-14 a:focus::after {
+    background: #000;
+}
+
+.cl-effect-14 a:hover::before,
+.cl-effect-14 a:focus::before {
+    left: 50%;
+    -webkit-transform: rotate(0deg) translateX(-50%);
+    -moz-transform: rotate(0deg) translateX(-50%);
+    transform: rotate(0deg) translateX(-50%);
+}
+
+.cl-effect-14 a:hover::after,
+.cl-effect-14 a:focus::after {
+    right: 50%;
+    -webkit-transform: rotate(0deg) translateX(50%);
+    -moz-transform: rotate(0deg) translateX(50%);
+    transform: rotate(0deg) translateX(50%);
+}
+
+
+
+/**
+ * 3 - Widget
+ */
+
+.widget {
+    background: #fff;
+    padding: 0 0 0;
+}
+
+.widget ul li {
+    list-style-type: none;
+    position: relative;
+    line-height: 170%;
+    margin-bottom: 10px;
+}
+
+.widget-tag-cloud ul {
+    padding: 0;
+    margin: 0;
+    margin-right: -10px;
+}
+
+.widget-tag-cloud ul li {
+    list-style-type: none;
+    font-size: 13px;
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 3px 8px;
+    border: 1px solid #ddd;
+}
+
+
+/**
+ * 4 - Footer
+ */
+
+#site-footer {
+    padding-top: 10px;
+    padding: 0 0 1.5em 0;
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 1em;
+    margin: 0;
+    border-top: 1px solid #eee;
+    color: #666;
+}
+
+
+
+/**
+ * 5 - Contact Page Social
+ */
+
+.social {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.social li {
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    font-size:20px;
+}
+
+
+
+
+/**
+ * 6 - Pagination
+ */
+
+.pagination ul {
+    list-style: none;
+}
+
+.disabled {
+    color: lightgray;
+}
+
+
+.pagination ul li {
+    display: inline-block;
+    font-size: 16px;
+    margin-right: 5px;
+}
+
+.current a {
+    font-weight:700;
+}
+
+/**
+ * 7 - highlight
+ */
+/* for block of numbers */
+.codehilite {
+    padding: 0;
+}
+
+/* for block of numbers */
+.hljs-ln-numbers {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-align: right;
+    color: #ccc;
+    border-right: 1px solid #CCC;
+    vertical-align: top;
+    padding-right: 5px;
+}
+
+.hljs-ln-n {
+    width: 30px;
+}
+
+/* for block of code */
+.hljs-ln .hljs-ln-code {
+    padding-left: 10px;
+    white-space: pre;
+}
+
+/* 搜索关键词高亮 */
+span.highlighted {
+    color: red;
+}
+
+/* 侧边栏 */
+.sidebar {
+    will-change: min-height;
+}
+
+.sidebar__inner {
+    transform: translate(0, 0);
+    transform: translate3d(0, 0, 0);
+    will-change: position, transform;
+}
+
+/**
+ * 8 - BackToTop
+ */
+
+/* 回到顶部按钮 */
+
+/* 按钮边框的大小、位置、样式 */
+.toTop-arrow {
+    width: 3.5rem;
+    height: 3.5rem;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    border-radius: 33%;
+    opacity: 0.7;
+    background: black;
+    cursor: pointer;
+    position: fixed;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    display: none;
+}
+
+    /* 绘制按钮中的向上箭头 */
+    .toTop-arrow::before, .toTop-arrow::after {
+        width: 31px;
+        height: 7px;
+        border-radius: 3px;
+        background: white;
+        position: absolute;
+        content: "";
+    }
+
+    .toTop-arrow::before {
+        transform: rotate(-45deg) translate(0, -50%);
+        left: 0.4rem;
+    }
+
+    .toTop-arrow::after {
+        transform: rotate(45deg) translate(0, -50%);
+        right: 0.4rem;
+    }
+
+    /* 取消点击按钮时的聚焦 */
+    .toTop-arrow:focus {
+        outline: none;
+    }

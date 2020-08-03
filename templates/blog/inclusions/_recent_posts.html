@@ -1,0 +1,13 @@
+<div class="widget widget-recent-posts">
+  <ul>
+    {% for post in recent_post_list %}
+
+      <li>
+          <i class=".widget-recent-posts-ico icon-file-alt"></i>
+          <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+      </li>
+    {% empty %}
+      暂无文章！
+    {% endfor %}
+  </ul>
+</div>

@@ -1,0 +1,72 @@
+﻿{% load static %}
+{% include 'staticbase.html' %}
+{% include 'navbar.html' %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}{% endblock title %}</title>
+    {% block staticsbase %}{% endblock staticsbase %}
+</head>
+
+<body>
+    <header>
+        {% block navbar %}{% endblock navbar %}
+    </header>
+    <br>
+
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fixed-top" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    <br>
+    <br>
+
+    {% block widmain %}{% endblock widmain %}
+
+    <div class="container">
+        <div class="row">
+            <main class="col-md-8">
+                {% block main %}{% endblock main %}
+            </main>
+            <aside class="container col-md-4 ">
+                <div id="sidebar" class="sidebar">
+                    <div class="sidebar__inner">
+                        {% block toc %}{% endblock toc %}
+                        {% block aside %}{% endblock aside %}
+                        </div>
+                    </div>
+            </aside>
+        </div>
+    </div>
+
+    <footer id="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="copyright">&copy 2020 Saltshui - <a href="http://www.beian.miit.gov.cn">浙ICP备20024384号</a></p>
+                    
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    {% block script %}{% endblock script %}
+    {% include 'back_to_top_func.html' %}
+
+    <script src="{% static 'js/jquery.sticky-sidebar.min.js' %}"></script>
+    <script type="text/javascript">
+    $('#sidebar').stickySidebar({
+        topSpacing: 20,
+        bottomSpacing: 20,
+    });</script>
+
+</body>
+</html>
